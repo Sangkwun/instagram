@@ -4,17 +4,7 @@ from . import views
 urlpatterns = [
     url(
         regex=r'^$',
-        view=views.ListAllImages.as_view(),
-        name='images'
+        view=views.Feed.as_view(),
+        name='feed'
     ),
-    url(
-        regex=r'^comments/$',
-        view=views.ListAllComments.as_view(),
-        name='comments'
-    ),
-    url(
-        regex=r'^likes/$',
-        view=views.ListAllLikes.as_view(),
-        name='likes'
-    )
 ]
