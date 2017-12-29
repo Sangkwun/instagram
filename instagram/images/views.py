@@ -5,7 +5,6 @@ from . import models, serializers
 class ListAllImages(APIView):
 
     def get(self, request, format=None):
-
         all_images = models.Image.objects.all()
         serializer = serializers.ImageSerializer(all_images, many=True)
 
@@ -14,6 +13,8 @@ class ListAllImages(APIView):
 class ListAllComments(APIView):
 
     def get(self, request, format=None):
+        
+        user_id = request.user.id
 
         all_comments = models.Comment.objects.all()
         serializer = serializers.CommentSerializer(all_comments, many=True)
