@@ -14,7 +14,7 @@ class ExploreUsers(APIView):
         
         last_five = models.User.objects.all().order_by('-date_joined')[:5]
 
-        serializer = serializers.ExploreUserSerializer(last_five, many=True)
+        serializer = serializers.ListUserSerializer(last_five, many=True)
 
         return Response(data=serializer.data, status=status.HTTP_200_OK)
 
@@ -51,6 +51,34 @@ class UnfollowUser(APIView):
 
         return Response(status=status.HTTP_200_OK)
 
+class UserProfile(APIView):
+
+    def get(self, reqeust, user_name, format=None):
+
+        try:
+            found_user = models.User.objects.get(username=user_name)
+        except models.User.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        serializer = serializers.UserProfileSerializer(found_user)
+
+        return Response(data=serializer.data, status=status.HTTP_200_OK)
+
+class UserFollowers(APIView):
+
+    def get(self,request, user_name, format=None):
+
+        try:
+            found_user = models.User.objects.get(username=user_name)
+        except models.User.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        user_followers = found_user.followers.all()
+
+        serializer = serializers.ListUserSerializer(user_followers, many=True)
+
+        return Response(data=serializer.data, status=status.HTTP_200_OK)
+
 
 class UserDetailView(LoginRequiredMixin, DetailView):
     model = models.User
@@ -81,7 +109,7 @@ class UserUpdateView(LoginRequiredMixin, UpdateView):
 
     def get_object(self):
         # Only get the User record for the user making the request
-        return User.objects.get(username=self.request.user.username)
+        return models.User.objects.get(username=self.request.user.username)
 
 
 class UserListView(LoginRequiredMixin, ListView):
