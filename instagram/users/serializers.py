@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from . import models
-from instagram.images.serializers import UserProfileImageSerializer
+from instagram.images.serializers import CountImageSerializer
 
 class ListUserSerializer(serializers.ModelSerializer):
     
@@ -15,7 +15,7 @@ class ListUserSerializer(serializers.ModelSerializer):
 
 class UserProfileSerializer(serializers.ModelSerializer):
 
-    images = UserProfileImageSerializer(many=True)
+    images = CountImageSerializer(many=True)
 
     class Meta:
         model = models.User
