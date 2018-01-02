@@ -28,6 +28,11 @@ urlpatterns = [
         name='user_followers'
     ),
     url(
+        regex=r'^search/$',
+        view=views.Search.as_view(),
+        name='user_followers'
+    ),
+    url(
         regex=r'^$',
         view=views.UserListView.as_view(),
         name='list'
