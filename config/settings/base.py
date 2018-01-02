@@ -58,6 +58,7 @@ LOCAL_APPS = [
     # custom users app
     'instagram.users.apps.UsersConfig',
     'instagram.images.apps.ImagesConfig',
+    'instagram.notifications.apps.NotificationsConfig',
     # Your stuff: custom apps go here
 ]
 

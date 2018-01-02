@@ -1,6 +1,6 @@
 from django.db import models
-from instagram.users import models as user_models
 from django.utils.encoding import python_2_unicode_compatible
+from instagram.users import models as user_models
 from taggit.managers import TaggableManager
 
 @python_2_unicode_compatible
