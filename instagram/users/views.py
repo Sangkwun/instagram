@@ -8,6 +8,8 @@ from rest_framework.response import Response
 from rest_framework import status
 from . import models, serializers
 
+from instagram.notifications.views import create_notification
+
 class ExploreUsers(APIView):
 
     def get(self,request,format=None):
@@ -32,6 +34,9 @@ class FollowUser(APIView):
         user.following.add(user_to_follow)
         user.save()
 
+        ## Create notification ##
+        create_notification(user, user_to_follow, 'follow')
+        
         return Response(status=status.HTTP_200_OK)
 
 
