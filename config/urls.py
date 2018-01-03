@@ -5,6 +5,8 @@ from django.contrib import admin
 from django.views.generic import TemplateView
 from django.views import defaults as default_views
 
+from rest_framework_jwt.views import obtain_jwt_token
+
 urlpatterns = [
     url(r'^$', TemplateView.as_view(template_name='pages/home.html'), name='home'),
     url(r'^about/$', TemplateView.as_view(template_name='pages/about.html'), name='about'),
@@ -13,6 +15,7 @@ urlpatterns = [
     url(settings.ADMIN_URL, admin.site.urls),
 
     # User management
+    url(r'^api-token-auth/', obtain_jwt_token),
     url(r'^users/', include('instagram.users.urls', namespace='users')),
     url(r'^images/', include('instagram.images.urls', namespace='images')),
     url(r'^notifications/', include('instagram.notifications.urls', namespace='notifications')),
