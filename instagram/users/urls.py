@@ -28,6 +28,11 @@ urlpatterns = [
         name='user_followers'
     ),
     url(
+        regex=r'^(?P<username>[\w.@+-]+)/$',
+        view=views.UserDetailView.as_view(),
+        name='detail'
+    ),
+    url(
         regex=r'^search/$',
         view=views.Search.as_view(),
         name='user_followers'
@@ -41,11 +46,6 @@ urlpatterns = [
         regex=r'^~redirect/$',
         view=views.UserRedirectView.as_view(),
         name='redirect'
-    ),
-    url(
-        regex=r'^(?P<username>[\w.@+-]+)/$',
-        view=views.UserDetailView.as_view(),
-        name='detail'
     ),
     url(
         regex=r'^~update/$',
