@@ -28,6 +28,11 @@ urlpatterns = [
         name='user_followers'
     ),
     url(
+        regex=r'^(?P<user_name>\w+)/password/$',
+        view=views.ChangePassword.as_view(),
+        name='change_password'
+    ),
+    url(
         regex=r'^(?P<username>[\w.@+-]+)/$',
         view=views.UserDetailView.as_view(),
         name='detail'
