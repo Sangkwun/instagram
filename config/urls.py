@@ -4,7 +4,6 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.views.generic import TemplateView
 from django.views import defaults as default_views
-
 from rest_framework_jwt.views import obtain_jwt_token
 
 urlpatterns = [
@@ -15,7 +14,8 @@ urlpatterns = [
     url(settings.ADMIN_URL, admin.site.urls),
 
     # User management
-    url(r'^api-token-auth/', obtain_jwt_token),
+    url(r'^rest-auth/', include('rest_auth.urls')),
+    ##url(r'^api-token-auth/', obtain_jwt_token),
     url(r'^users/', include('instagram.users.urls', namespace='users')),
     url(r'^images/', include('instagram.images.urls', namespace='images')),
     url(r'^notifications/', include('instagram.notifications.urls', namespace='notifications')),
