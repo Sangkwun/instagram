@@ -53,10 +53,11 @@ THIRD_PARTY_APPS = [
     'taggit', #Tag for images
     'taggit_serializer', #Tag serializer module
 
-    ###login module###
-    'rest_framework.authtoken',
+    ### Login ###
     'rest_auth',
+    'rest_framework.authtoken',
     'rest_auth.registration',
+
 ]
 
 # Apps specific for this project go here.
@@ -291,10 +292,10 @@ REST_FRAMEWORK = {
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
-        #'rest_framework.authentication.SessionAuthentication',
-        #'rest_framework.authentication.BasicAuthentication',
     ),
 }
+#'rest_framework.authentication.SessionAuthentication',
+#'rest_framework.authentication.BasicAuthentication',
 
 REST_USE_JWT = True
 ACCOUNT_LOGOUT_ON_GET = True
