@@ -51,6 +51,7 @@ THIRD_PARTY_APPS = [
     'allauth.socialaccount',  # registration
     'rest_framework', # REST framework
     'taggit', #Tag for images
+    'taggit_serializer', #Tag serializer module
 ]
 
 # Apps specific for this project go here.
