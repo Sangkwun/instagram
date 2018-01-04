@@ -57,6 +57,7 @@ THIRD_PARTY_APPS = [
     'rest_auth',
     'rest_framework.authtoken',
     'rest_auth.registration',
+    'allauth.socialaccount.providers.facebook', #For facebook login
 
 ]
 
@@ -299,3 +300,4 @@ REST_FRAMEWORK = {
 
 REST_USE_JWT = True
 ACCOUNT_LOGOUT_ON_GET = True
+SOCIALACCOUNT_QUERY_EMAIL = True
