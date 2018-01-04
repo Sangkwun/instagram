@@ -15,6 +15,7 @@ urlpatterns = [
 
     # User management
     url(r'^rest-auth/', include('rest_auth.urls')),
+    url(r'^rest-auth/registration/', include('rest_auth.registration.urls')),
     ##url(r'^api-token-auth/', obtain_jwt_token),
     url(r'^users/', include('instagram.users.urls', namespace='users')),
     url(r'^images/', include('instagram.images.urls', namespace='images')),
