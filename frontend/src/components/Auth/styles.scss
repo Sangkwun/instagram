@@ -11,9 +11,18 @@
 
     .column{
         width: 40%;
+        @include breakpoint(mobileonly){
+            &:first-child{
+                display:none;
+            }
+        }
         &:last-child{
             width: 38%;
             margin-left: 35px;
+            @include breakpoint(mobileonly){
+                width: 100%;
+                margin: 0;
+            }
         }
         .app-box{
             display:flex;
@@ -34,11 +43,15 @@
             text-align: center;
             padding: 15px;
             @include boxBorder(no);
+            @include breakpoint(mobileonly){
+                background-color: transparent;
+                border: 0;
+            }
             .change-link {
                 color: $light-blue;
                 cursor: pointer;
             }
-            p {
+            .text{
                 margin: 15px;
             }
         }
