@@ -1,8 +1,6 @@
 export const translations = {
-    es: {
-        "Log in": "Iniciar Session"
-    },
-    kr: {
-        "Log in": "Login Page"
+    ko: {
+        "Log in": "로그인",
+        "About Us":"우리는"
     }
 }
