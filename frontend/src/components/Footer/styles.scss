@@ -9,13 +9,13 @@
     font-size: $small-font-size;
     text-transform: uppercase;
     flex-wrap: wrap;
-    @include breakpoint(mobileonly){
+    @include breakpoint("phone-tablet"){
         justify-content: center;
     }
 
     .column {
         //margin-bottom: 15px;
-        @include breakpoint(mobileonly){
+        @include breakpoint("phone-tablet"){
             margin-bottom: 0;
         }
         .nav {
@@ -23,7 +23,7 @@
                 display: flex;
                 flex-wrap: wrap;
 
-                 @include breakpoint(mobileonly){
+                 @include breakpoint("phone-tablet"){
                     justify-content: center;
                 }
                 .list-item {
@@ -31,7 +31,7 @@
                     color: $dark-blue;
                     cursor: pointer;
 
-                    @include breakpoint(mobileonly){
+                    @include breakpoint("phone-tablet"){
                         margin-bottom: 15px;
                     }
                 }
