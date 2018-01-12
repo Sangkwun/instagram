@@ -2,6 +2,14 @@
 
 
 //actions
+const SAVE_TOKEN = "SAVE_TOKEN";
+
+function saveToken(token){
+    return {
+        type: SAVE_TOKEN,
+        token
+    }
+}
 
 // API actions
 function facebookLogin(access_token){
@@ -16,7 +24,12 @@ function facebookLogin(access_token){
           })
         })
         .then(response => response.json())
-        .then(json=> console.log(json))
+        .then(json=> {
+            if(json.token){
+                localStorage.setItem("jwt", json.token);
+                dispatch(saveToken(json.token));
+            }
+        })
         .then(err=>console.log(err))
     };
 }
@@ -31,13 +44,15 @@ export { actionCreators }
 //initial state
 
 const initialState = {
-    isLoggedIn: localStorage.getItem('jwt') || false
+    isLoggedIn: localStorage.getItem('jwt') ? true : false
 };
 
 
 //reducer
 function reducer(state=initialState, action){
     switch(action.type){
+        case SAVE_TOKEN:
+        return applySetToken(state, action)
         default:
             return state;
     }
@@ -46,7 +61,14 @@ function reducer(state=initialState, action){
 
 
 //reducer function
-
+function applySetToken(state, action){
+    const { token } = action;
+    return {
+        ...state,
+        isLoggedIn: true,
+        token
+    }
+}
 
 
 
