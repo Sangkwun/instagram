@@ -1,7 +1,8 @@
 import React from "react";
-import Ionicon from "react-ionicons";
 import formStyles from "shared/formStyles.scss";
 import Proptypes from "prop-types";
+import FacebookLogin from 'react-facebook-login';
+//import Ionicon from "react-ionicons";
 
 export const LoginForm = (props, context) => <div className={formStyles.formComponent}>
            <form className={formStyles.form} onSubmit={props.handleSubmit}>
@@ -10,10 +11,9 @@ export const LoginForm = (props, context) => <div className={formStyles.formComp
              <input type="submit" placeholder={context.t("Log in")} className={formStyles.button} />
            </form>
            <span className={formStyles.divider}>or</span>
-           <span className={formStyles.facebookLink}>
-             <Ionicon icon="logo-facebook" fontSize="20px" color="$385185" />
-             {context.t("Log in with Facebook")}
-           </span>
+           <FacebookLogin appId="541464489550594" autoLoad={true} fields="name,email,picture" callback={props.handleFacebookLogin} cssClass={formStyles.facebookLink} icon="fa-facebook-official">
+             {/* <Ionicon icon="logo-facebook" fontSize="20px" color="#385185" />{" "} {context.t("Log in with Facebook")} */}
+           </FacebookLogin>
            <span className={formStyles.forgotLink}>
              {context.t("Forgot password?")}
            </span>
@@ -23,7 +23,8 @@ LoginForm.prototype = {
   usernameValue: Proptypes.string.isRequired,
   passwordValue: Proptypes.string.isRequired,
   handleInputChange: Proptypes.func.isRequired,
-  handleSubmit: Proptypes.func.isRequired
+  handleSubmit: Proptypes.func.isRequired,
+  handleFacebookLogin: Proptypes.func.isRequired,
 }
 
 LoginForm.contextTypes = {

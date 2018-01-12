@@ -13,7 +13,7 @@ class Container extends Component{
 
     render(){
         const { email, fullname, username, password } = this.state;
-        return <SignForm emailValue={email} fullnameValue={fullname} usernameValue={username} passwordValue={password} handleInputChange={this._handleInputChange} handleSubmit={this._handleSubmit}/>;
+        return <SignForm emailValue={email} fullnameValue={fullname} usernameValue={username} passwordValue={password} handleInputChange={this._handleInputChange} handleSubmit={this._handleSubmit} handleFacebookLogin={this._handleFacebookLogin}/>;
     };
     _handleInputChange = event =>{
         const {target:{ value, name }} = event;
@@ -24,6 +24,9 @@ class Container extends Component{
     _handleSubmit = event =>{
         event.preventDefault();
         console.log(this.state);
+    }
+    _handleFacebookLogin = response =>{
+        console.log(response)
     }
 }
 
