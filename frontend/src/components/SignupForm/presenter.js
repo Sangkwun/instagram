@@ -10,7 +10,7 @@ export const SignupForm = (props, context) => <div className={formStyles.formCom
                "Sign up to see photos and videos from your friends."
              )}
            </h3>
-           <FacebookLogin appId="541464489550594" autoLoad={true} fields="name,email,picture" callback={props.handleFacebookLogin} cssClass={formStyles.facebookLink} icon="fa-facebook-official" />
+           <FacebookLogin appId="541464489550594" autoLoad={true} fields="name,email,picture" callback={props.handleFacebookLogin} cssClass={formStyles.button} icon="fa-facebook-official" textButton={context.t("Login with Facebook")} />
            {/* <button className={formStyles.button}>
              {" "}
              <Ionicon icon="logo-facebook" fontSize="20px" color="white" />
