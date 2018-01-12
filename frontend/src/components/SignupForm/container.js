@@ -1,5 +1,6 @@
 import React,{ Component } from "react";
 import SignForm from "./presenter";
+import PropTypes from 'prop-types'
 
 //const Container = props => <SignForm {...props} />;
 
@@ -9,6 +10,10 @@ class Container extends Component{
         fullname: "",
         username: "",
         password: ""
+    };
+
+    static propTypes = {
+        facebookLogin: PropTypes.func.isRequired
     };
 
     render(){
@@ -27,6 +32,8 @@ class Container extends Component{
     }
     _handleFacebookLogin = response =>{
         console.log(response)
+        const {facebookLogin } = this.props;
+        facebookLogin(response.accessToken);
     }
 }
 
