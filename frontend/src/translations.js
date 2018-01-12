@@ -1,6 +1,30 @@
 export const translations = {
-    ko: {
-        "Log in": "로그인",
-        "About Us":"우리는"
-    }
+  'ko': {
+    'Don\'t have and account?': '회원이 아니신가요?',
+    'Sign up': '가입하기',
+    'Have an account?': '회원이신가요?',
+    'Log in': '',
+    'Get the app': '',
+    'Username': '',
+    'Password': '',
+    'Log in with Facebook': '',
+    'Forgot password?': '',
+    'Sign up to see photos and videos from your friends.': '',
+    'Login with Facebook': '',
+    'By signing up, you agree to our': '',
+    'Terms & Privacy Policy': '',
+    'About Us': '',
+    'Support': '',
+    'Blog': '',
+    'Press': '',
+    'API': '',
+    'Jobs': '',
+    'Privacy': '',
+    'Terms': '',
+    'Directory': '',
+    'Language': '',
+    '©2018 instagram': '',
+  },
+  'options': {
+  },
 }
