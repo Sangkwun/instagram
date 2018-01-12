@@ -1,6 +1,6 @@
 import React from 'react';
 import Ionicon from 'react-ionicons';
-import styles from './styles.scss';
+import styles from 'shared/formStyles.scss';
 import Proptypes from 'prop-types'
 
 export const LoginForm = (props,context) => (

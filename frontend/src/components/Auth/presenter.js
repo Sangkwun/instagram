@@ -1,7 +1,9 @@
 import React from 'react';
 import styles from './styles.scss';
-import { LoginForm, SignupForm } from 'components/AuthForms';
-import Proptypes from 'prop-types'
+import Proptypes from 'prop-types';
+
+import LoginForm from "components/LoginForm";
+import SignupForm from "components/SignupForm";
 
 const Auth = (props, context) => (
   <main className={styles.auth}>
