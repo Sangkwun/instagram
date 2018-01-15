@@ -19,10 +19,11 @@ class User(AbstractUser):
     # First Name and Last Name do not cover name patterns
     # around the globe.
     name = models.CharField(_('Name of User'), blank=True, max_length=255)
-    website = models.URLField(null=True)
-    bio = models.TextField(null=True)
-    phone = models.TextField(max_length=140, null=True)
-    gender = models.CharField(max_length=80, choices=GENDER_CHOICES, null=True)
+    website = models.URLField(null=True, blank=True)
+    bio = models.TextField(null=True, blank=True)
+    phone = models.TextField(max_length=140, null=True, blank=True)
+    gender = models.CharField(
+        max_length=80, choices=GENDER_CHOICES, null=True, blank=True)
     followers = models.ManyToManyField('self', blank=True)
     following = models.ManyToManyField('self', blank=True)
     profile_image = models.ImageField(null = True, blank=True)
