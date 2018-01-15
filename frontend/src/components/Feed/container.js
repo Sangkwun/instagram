@@ -13,7 +13,13 @@ class Container extends Component {
 
   componentDidMount() {
     const { getFeed } = this.props;
-    getFeed();
+    if(!this.props.feed){
+      getFeed();
+    } else {
+      this.setState({
+        loading: false //Component가 등장할 때 마다 loading은 true가 되므로
+      })
+    }
   }
 
   componentWillReceiveProps = (nextProps) => {
