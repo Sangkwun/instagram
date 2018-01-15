@@ -15,13 +15,12 @@ class Container extends Component {
   componentDidMount() {
     const { getFeed } = this.props;
     
-    if(this.props.feed.length === 0){ //!this.props.feed에서 length체크로 변경
+    if (!this.props.feed) {
+      //!this.props.feed에서 length체크로 변경
       getFeed();
     } else {
       //console.log(this.props.feed);
-      this.setState({
-        loading: false //Component가 등장할 때 마다 loading은 true가 되므로
-      });
+      this.setState({ loading: false }); //Component가 등장할 때 마다 loading은 true가 되므로
     }
   }
 

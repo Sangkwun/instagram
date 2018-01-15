@@ -33,7 +33,6 @@ function getFeed(){
 
 //initial state
 const initialState = {
-    feed: []
 };
 
 //reducer
