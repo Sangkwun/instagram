@@ -60,20 +60,18 @@ function likePhoto(photoId){
     return(dispatch, getState) => {
         dispatch(doLikePhoto(photoId))
         const { user: { token } } = getState();
-        fetch(`/images/${photoId}/likes`, {
+        fetch(`/images/${photoId}/likes/`, {
+          method: "POST",
           headers: {
-            method : "POST",
-            Authorization: `JWT ${token}`
+            Authorization : `JWT ${token}`
           }
-        })
-        .then(response => {
-            if(response.status === 401){
-                dispatch(userActions.logout());
-            } else if(!response.ok){
-                dispatch(doUnlikePhoto(photoId))
-            }
-        })
-
+        }).then(response => {
+          if (response.status === 401) {
+            dispatch(userActions.logout());
+          } else if (!response.ok) {
+            dispatch(doUnlikePhoto(photoId));
+          }
+        });
     }
 }
 
@@ -81,10 +79,10 @@ function unlikePhoto(photoId) {
   return (dispatch, getState) => {
     dispatch(doUnlikePhoto(photoId));
     const { user: { token } } = getState();
-    fetch(`/images/${photoId}/likes`, {
+    fetch(`/images/${photoId}/likes/`, {
+      method: "POST",
       headers: {
-        method: "POST",
-        Authorization: `JWT ${token}`
+        Authorization : `JWT ${token}`
       }
     }).then(response => {
       if (response.status === 401) {
