@@ -26,6 +26,7 @@ const FeedPhoto = (props, context) => {
 }
 
 FeedPhoto.propTypes = {
+  id: PropTypes.number.isRequired,
   creator: PropTypes.shape({
     profile_image: PropTypes.string.isRequired,
     username: PropTypes.string.isRequired
@@ -40,7 +41,7 @@ FeedPhoto.propTypes = {
       creator: PropTypes.shape({
         profile_image: PropTypes.string.isRequired,
         username: PropTypes.string.isRequired
-      }).isRequired,
+      }).isRequired
     })
   ),
   natural_time: PropTypes.string.isRequired,
