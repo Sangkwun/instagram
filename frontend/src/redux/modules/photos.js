@@ -29,10 +29,10 @@ function doUnlikePhoto(photoId) {
   };
 }
 
-function AddComment(photoID, comment){
+function AddComment(photoId, comment){
     return {
         type: ADD_COMMENT,
-        photoID,
+        photoId,
         comment
     }
 }
@@ -182,12 +182,7 @@ function applyUnlikePhoto(state, action) {
 }
 
 function applyAddComment(state, action) {
-    const { comment } = action;
-    const photoId = action.photoID
-    console.log(action)
-    console.log(comment)
-    console.log(photoId)
-
+    const { comment, photoId } = action;
     const { feed } = state;
     const updatedFeed = feed.map(photo => {
 
