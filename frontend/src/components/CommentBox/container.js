@@ -3,8 +3,24 @@ import CommentBox from './presenter';
 
 
 class Container extends Component {
+    state = {
+        comment: ""
+    };
     render(){
-    return <CommentBox />;
+    return (<CommentBox handleInputChange={this._handleInputChange} handleKeyPress={this._handleKeyPress} {...this.state} />);
+    }
+    _handleInputChange = (event) => {
+        const { target : { value }} = event;
+        this.setState({
+            comment: value
+        })
+    }
+    _handleKeyPress = (event) => {
+        const { key } = event;
+        if(key==="Enter"){
+            event.preventDefault();
+        }
+        console.log(key);
     }
 }
 
