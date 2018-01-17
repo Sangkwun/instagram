@@ -116,7 +116,7 @@ class UserFollowers(APIView):
 
         user_followers = found_user.followers.all()
 
-        serializer = serializers.ListUserSerializer(user_followers, many=True)
+        serializer = serializers.ListUserSerializer(user_followers, many=True, context= {"request": request})
 
         return Response(data=serializer.data, status=status.HTTP_200_OK)
 

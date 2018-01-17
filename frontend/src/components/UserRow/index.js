@@ -1,48 +1,19 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styles from './styles.scss';
+import { connect } from 'react-redux';
+import Container from './container';
+import { actionCreators as userActions } from 'redux/modules/user';
 
-const UserRow = (props) => (
-  <div className={styles.container}>
-    {props.userList.map(user => (
-      <User
-        username={user.username}
-        profile_image={user.profile_image || require("images/noPhoto.jpg")}
-        name={user.name}
-      />
-    ))}
-  </div>
-);
-
-const User = (props,context) => (
-  <div className={styles.user}>
-    <ul>
-      <img
-        src={props.profile_image}
-        alt={props.username}
-        className={styles.profile}
-      />
-    </ul>
-    <ul className={styles.text}>
-      <tab>
-        <span className={styles.username}>{props.username}</span>
-      </tab>
-      <tab>
-        <span className={styles.name}>{props.name}</span>
-      </tab>
-    </ul>
-    <ul className={styles.follow}>
-        <input type="submit" value={context.t("Follow")} className={styles.button} />
-    </ul>
-  </div>
-);
-
-UserRow.propTypes = {
-    userList : PropTypes.array.isRequired
+const mapDispatchToProps = (dispatch, ownProps) => {
+  const { user } = ownProps;
+  return {
+    handleClick: (userId, following) => {
+      if(user.following){
+        dispatch(userActions.unfollowUser(user.id))
+      }
+      else{
+        dispatch(userActions.followUser(user.id));
+      }
+    }
+  }
 }
 
-User.contextTypes = {
-    t : PropTypes.func.isRequired
-}
-
-export default UserRow;
+export default connect(null, mapDispatchToProps)(Container);

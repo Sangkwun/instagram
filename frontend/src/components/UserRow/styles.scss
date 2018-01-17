@@ -1,43 +1,36 @@
-.container{
-    width: 100%;
-
-}
-.user{
-
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px;
+  width: 100%;
+  border-bottom: 1px solid $light-grey;
+  box-sizing: border-box;
+  .column {
     display: flex;
-    justify-content: flex-start;
     align-items: center;
-    padding: 10px;
-    border-bottom:  1px solid $light-grey;
-    
-    .profile{
-        width: 30px;
-        border-radius: 50%;
-        margin-right: 15px;
+
+    .user {
+      margin-left: 10px;
+      .username {
+        font-weight: 600;
+        margin-bottom: 3px;
+        display: block;
+      }
+      .name{
+        color: $dark-gray;
+      }
     }
-    .text{
-        display: flex;
-        flex-direction: column;
-        .username{
-            font-weight: 600;
-            font-size: $normal-font-size;
-        }
-        .name{
-            font-weight: 600;
-            font-size: $small-font-size;
-            
-            color: $dark-gray;
-        }
+    .bigAvatar {
+      width: 55px;
+      border-radius: 50%;
     }
-    .follow{
-        margin-left: auto;
-        margin-right: 5px;
-        .button{
-            @include blueButton();
-            svg {
-                margin-right: 10px;
-            }
-        }
-        
+    .avatar {
+      width: 30px;
+      border-radius: 50%;
     }
+    .button {
+      @include blueButton();
+    }
+  }
 }
