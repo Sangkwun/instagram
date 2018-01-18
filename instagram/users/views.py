@@ -17,6 +17,8 @@ from rest_auth.registration.views import SocialLoginView
 class ExploreUsers(APIView):
 
     def get(self,request,format=None):
+
+        print(request.META['HTTP_HOST'])
         
         last_five = models.User.objects.all().order_by('-date_joined')[:5]
 
@@ -27,7 +29,6 @@ class ExploreUsers(APIView):
 class FollowUser(APIView):
 
     def post(self, request, user_id, format=None):
-
         user = request.user
         
         try:

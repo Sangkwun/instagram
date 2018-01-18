@@ -117,7 +117,7 @@ function getPhotoLikes(photoId){
         const { user: { token }} = getState();
         fetch(`/images/${photoId}/likes/`,{
             headers: {
-                Authorization: `JWT ${token}`
+                Authorization: `JWT ${token}`,
             }
         })
         .then(response => {
@@ -135,13 +135,64 @@ function getPhotoLikes(photoId){
 function followUser(userId){
     return (dispatch, getState) => {
         dispatch(setFollowUser(userId));
+        const { user: { token } } = getState();
+        fetch(`/users/${userId}/follow/`, {
+          method: "POST",
+          headers: {
+            Authorization: `JWT ${token}`,
+            "Content-Type": "application/json"
+          }
+        })
+        .then(response => {
+            if(response.status === 401){
+                dispatch(logout());
+            } else if(!response.ok){
+                dispatch(setUnfollowUser(userId));
+            }
+        })
     };
 }
 
 function unfollowUser(userId) {
-  return (dispatch, getState) => {
-    dispatch(setUnfollowUser(userId));
-  };
+    return (dispatch, getState) => {
+      dispatch(setUnfollowUser(userId));
+      const { user: { token } } = getState();
+      fetch(`/users/${userId}/unfollow/`, {
+        method: "POST",
+        headers: {
+          Authorization: `JWT ${token}`,
+          "Content-Type": "application/json"
+        }
+      }).then(response => {
+        if (response.status === 401) {
+          dispatch(logout());
+        } else if (!response.ok) {
+          dispatch(setFollowUser(userId));
+        }
+      });
+    };
+}
+
+function getExplore(){
+    return (dispatch, getState) => {
+      const { user: { token } } = getState();
+      fetch(`/users/explore/`, {
+        method: "GET",
+        headers: {
+          Authorization: `JWT ${token}`,
+          "Content-Type": "application/json"
+        }
+      })
+        .then(response => {
+          if (response.status === 401) {
+            dispatch(logout());
+          }
+          return response.json();
+        })
+        .then(json => {
+          dispatch(setUserList(json));
+        });
+    };
 }
 
 //initial state
@@ -224,13 +275,14 @@ function applyUnfollowUser(state, action){
 
 //action creator
 const actionCreators = {
-    facebookLogin,
-    usernameLogin,
-    createAccount,
-    logout,
-    getPhotoLikes,
-    followUser,
-    unfollowUser
+  facebookLogin,
+  usernameLogin,
+  createAccount,
+  logout,
+  getPhotoLikes,
+  followUser,
+  unfollowUser,
+  getExplore
 };
 
 //exports
