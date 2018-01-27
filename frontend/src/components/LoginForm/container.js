@@ -23,6 +23,7 @@ class Container extends Component{
             usernameValue={username} 
             passwordValue={password}/>
     };
+    
     _handleInputChangeEvent = event =>{
         
         const { target : { value, name }} = event;
@@ -30,7 +31,7 @@ class Container extends Component{
         
         this.setState({
             [name] : value 
-        })
+        });
     };
     _handleSubmit = event =>{
         event.preventDefault();
