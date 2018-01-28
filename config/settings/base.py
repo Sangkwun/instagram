@@ -125,10 +125,10 @@ MANAGERS = ADMINS
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#databases
 # Uses django-environ to accept uri format
 # See: https://django-environ.readthedocs.io/en/latest/#supported-types
-# DATABASES = {
-#     'default': env.db('DATABASE_URL', default='postgres://localhost/instagram'),
-# }
-# DATABASES['default']['ATOMIC_REQUESTS'] = True
+DATABASES = {
+    'default': env.db('DATABASE_URL', default='postgres://localhost/instagram'),
+}
+DATABASES['default']['ATOMIC_REQUESTS'] = True
 
 
 # GENERAL CONFIGURATION
@@ -347,3 +347,4 @@ SOCIALACCOUNT_PROVIDERS = {
 REST_AUTH_REGISTER_SERIALIZERS = {
     'REGISTER_SERIALIZER': 'instagram.users.serializers.SignUpSerializer'
 }
+
